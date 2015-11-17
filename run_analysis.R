@@ -41,30 +41,30 @@ extractedLabels <- gsub("tBody", "timeBody", extractedLabels)
 extractedLabels <- gsub("tGravity", "timeGravity", extractedLabels)
 extractedLabels <- gsub("[-()]", "", extractedLabels)
 
-# 3. Load the the training datasets
+# 4. Load the the training datasets
 xTrain <- read.table("train/X_train.txt")[extractedData]
 yTrain <- read.table("train/Y_train.txt")
 subjectTrain <- read.table("train/subject_train.txt")
 trainData <- cbind(subjectTrain, yTrain, xTrain)
 
-# 4. Load the the test datasets
+# 5. Load the the test datasets
 xTest <- read.table("test/X_test.txt")[extractedData]
 yTest <- read.table("test/Y_test.txt")
 subjectTest <- read.table("test/subject_test.txt")
 testData <- cbind(subjectTest, yTest, xTest)
 
-# 5. combine Train and Test datasets and add variable names
+# 6. combine Train and Test datasets and add variable names
 oneData <- rbind(trainData, testData)
 colnames(oneData) <- c("subject", "activity", extractedLabels)
 
-# 6. turn activities & subject into factors
+# 7. turn IDs into factors
 oneData$activity <- factor(oneData$activity, levels = activityLabels[,1],
                            labels = activityLabels[,2])
 oneData$subject <- as.factor(oneData$subject)
 
-#7. Melt and dcast dataset
+# 8. Melt and dcast the combined dataset
 meltedData <- melt(oneData, id = c("subject", "activity"))
 meanData <- dcast(meltedData, subject + activity ~ variable, mean)
 
-#8. Write tidyData.txt
+# 9. Write tidyData.txt
 write.table(meanData, "tidyData.txt", row.names = FALSE, quote = FALSE)
