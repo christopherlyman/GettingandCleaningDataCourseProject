@@ -9,7 +9,7 @@ Christopher H. Lyman
 ## Name:
 runAnalysis.R 
 
-## Data: 
+## Data: Unzip this data and set the working directory to the "UCI HAR Dataset" found within:
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
  
 ## Procedures:

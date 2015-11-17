@@ -2,7 +2,7 @@
 # Getting and Cleaning Data 
 # Course Project
 # Christopher H. Lyman
-# 2015-11-15
+# 2015-11-16
 #
 # runAnalysis.R 
 #
